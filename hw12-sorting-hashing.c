@@ -279,33 +279,33 @@ int shellSort(int *a)				// 셸 정렬을 하게 해주는 함수
 	return 0;
 }
 
-int quickSort(int *a, int n)
+int quickSort(int *a, int n)						// 퀵 정렬을 하게 해주는 함수
 {
 	int v, t;
 	int i, j;
 
-	if (n > 1)
+	if (n > 1)										// n이 1보다 클때(초기 MAX_ARRAY_SIZE)
 	{
-		v = a[n-1];
-		i = -1;
-		j = n - 1;
+		v = a[n-1];									// v에 a[n-1] 저장
+		i = -1;										// i에 -1 저장
+		j = n - 1;									// j에 n-1 저장
 
 		while(1)
 		{
-			while(a[++i] < v);
-			while(a[--j] > v);
+			while(a[++i] < v);						// a[++i]가 v배열보다 작을때까지 반복
+			while(a[--j] > v);						// a[--j]가 v배열보다 클때까지 반복
 
-			if (i >= j) break;
-			t = a[i];
+			if (i >= j) break;						// i가 j보다 크거나 같으면 break
+			t = a[i];								// a[i]와 a[j] 배열 교환
 			a[i] = a[j];
 			a[j] = t;
 		}
-		t = a[i];
+		t = a[i];									// a[i]와 a[n-1] 배열 교환
 		a[i] = a[n-1];
 		a[n-1] = t;
 
-		quickSort(a, i);
-		quickSort(a+i+1, n-i-1);
+		quickSort(a, i);							// 재귀 호출로 정렬하기 전 배열 출력
+		quickSort(a+i+1, n-i-1);					// 재귀 호출로 퀵정렬된 배열을 출력
 	}
 
 

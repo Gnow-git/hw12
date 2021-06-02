@@ -13,7 +13,7 @@
 #include <time.h>
 
 #define MAX_ARRAY_SIZE			13	/* prime number */		// 배열의 최대 크기를 13으로 지정
-#define MAX_HASH_TABLE_SIZE 	MAX_ARRAY_SIZE
+#define MAX_HASH_TABLE_SIZE 	MAX_ARRAY_SIZE				// 해쉬 테이블의 크기를 13으로 지정
 
 /* 필요에 따라 함수 추가 가능 */
 int initialize(int **a);			// 배열을 초기화하는 함수
@@ -29,13 +29,13 @@ int quickSort(int *a, int n);		// 퀵 정렬을 하게 해주는 함수
 
 
 /* hash code generator, key % MAX_HASH_TABLE_SIZE */
-int hashCode(int key);
+int hashCode(int key);				// 해쉬 함수를 구현하는 함수
 
 /* array a에대 한 hash table을 만든다. */
-int hashing(int *a, int **ht);
+int hashing(int *a, int **ht);		// 해싱을 하게 해주는 함수
 
 /* hash table에서 key를 찾아 hash table의 index return */
-int search(int *ht, int key);
+int search(int *ht, int key);		// 해쉬코드를 이용하여 원하는 배열을 찾는 함수
 
 
 int main()
@@ -312,7 +312,7 @@ int quickSort(int *a, int n)						// 퀵 정렬을 하게 해주는 함수
 	return 0;
 }
 
-int hashCode(int key) {
+int hashCode(int key) {								// 해쉬 함수를 구현하는 함수
    return key % MAX_HASH_TABLE_SIZE;
 }
 
@@ -353,32 +353,32 @@ int hashing(int *a, int **ht)
 
 			index = hashcode;
 
-			while(hashtable[index] != -1)
+			while(hashtable[index] != -1)				// 해쉬 테이블의 값이  -1이 아닐때까지
 			{
-				index = (++index) % MAX_HASH_TABLE_SIZE;
+				index = (++index) % MAX_HASH_TABLE_SIZE; // index에 (++index) % MAX_HASH_TABLE_SIZE 저장
 				/*
 				printf("index = %d\n", index);
 				*/
 			}
-			hashtable[index] = key;
+			hashtable[index] = key;						// hashtable[index] 에 key 저장
 		}
 	}
 
 	return 0;
 }
 
-int search(int *ht, int key)
+int search(int *ht, int key)			// 해쉬코드를 이용하여 원하는 배열을 찾는 함수
 {
 	int index = hashCode(key);
 
-	if(ht[index] == key)
-		return index;
+	if(ht[index] == key)				// 찾고자 하는 key와 ht[index]와 같을 경우
+		return index;					// index 값 리턴
 
-	while(ht[++index] != key)
+	while(ht[++index] != key)			// ht[++index]가 key와 같지 않을때까지
 	{
-		index = index % MAX_HASH_TABLE_SIZE;
+		index = index % MAX_HASH_TABLE_SIZE;	// index에 index % MAX_HASH_TABLE_SIZE 값 저장
 	}
-	return index;
+	return index;						// index 리턴
 }
 
 

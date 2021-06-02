@@ -214,35 +214,35 @@ int insertionSort(int *a)			// 삽입 정렬을 하게 해주는 함수
 	}
 
 	printf("----------------------------------------------------------------\n");
-	printArray(a);					// 정렬된 배열을 출력한다.
+	printArray(a);					// 삽입 정렬된 배열을 출력한다.
 
 	return 0;
 }
 
-int bubbleSort(int *a)
+int bubbleSort(int *a)				// 버블 정렬을 하게 해주는 함수
 {
 	int i, j, t;
 
 	printf("Bubble Sort: \n");
 	printf("----------------------------------------------------------------\n");
 
-	printArray(a);
+	printArray(a);					// 정렬하기 전의 배열 출력
 
-	for(i = 0; i < MAX_ARRAY_SIZE; i++)
+	for(i = 0; i < MAX_ARRAY_SIZE; i++)		// 13 크기 만큼 반복
 	{
-		for (j = 0; j < MAX_ARRAY_SIZE; j++)
+		for (j = 0; j < MAX_ARRAY_SIZE; j++)	// 13 크기 만큼 반복
 		{
-			if (a[j-1] > a[j])
+			if (a[j-1] > a[j])		// 비교하려는 a[j]와 그 전 배열을 비교하여 전 배열값이 크다면 두 값을 변경
 			{
-				t = a[j-1];
-				a[j-1] = a[j];
-				a[j] = t;
+				t = a[j-1];			// a[j-1]을 t에 저장
+				a[j-1] = a[j];		// a[j]를 a[j-1]에 저장
+				a[j] = t;			// t를 a[j]에 저장
 			}
 		}
 	}
 
 	printf("----------------------------------------------------------------\n");
-	printArray(a);
+	printArray(a);					// 버블 정렬된 배열을 출력
 
 	return 0;
 }

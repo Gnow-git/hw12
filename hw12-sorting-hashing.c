@@ -47,7 +47,7 @@ int main()
 	int index = -1;
 
 	srand(time(NULL));
-
+		printf("\t[-----[이 명 국]  [2017038100]-----]\n");
 	do{
 		printf("----------------------------------------------------------------\n");
 		printf("                        Sorting & Hashing                       \n");

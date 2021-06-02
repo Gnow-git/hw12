@@ -175,7 +175,7 @@ int selectionSort(int *a)			// 선택 정렬을 실행하는 함수
 	{
 		minindex = i;				// 기준 위치의 인덱스 i를 minindex에 설정
 		min = a[i];					// 기준 위치의 값 a[i]를 min에 설정
-		for(j = i+1; j < MAX_ARRAY_SIZE; j++)	// i+1번의 배열부터 마지막 배열까지 비교를 한다. 
+		for(j = i+1; j < MAX_ARRAY_SIZE; j++)	// i+1번의 배열부터 마지막 배열까지 비교를 함 
 		{
 			if (min > a[j])
 			{
@@ -188,7 +188,7 @@ int selectionSort(int *a)			// 선택 정렬을 실행하는 함수
 	}
 
 	printf("----------------------------------------------------------------\n");
-	printArray(a);					// 정렬된 배열을 출력
+	printArray(a);					// 선택 정렬된 배열을 출력
 	return 0;
 }
 
@@ -203,18 +203,18 @@ int insertionSort(int *a)			// 삽입 정렬을 하게 해주는 함수
 
 	for(i = 1; i < MAX_ARRAY_SIZE; i++)		// 13 크기 만큼 반복
 	{
-		t = a[i];					// 아직 정렬하지 않은 배열의 첫번째 원소 a[i]를 t에 저장한다.
-		j = i;						// 정렬 대상의 인덱스를 j에 저장한다.
+		t = a[i];					// 아직 정렬하지 않은 배열의 첫번째 원소 a[i]를 t에 저장
+		j = i;						// 정렬 대상의 인덱스를 j에 저장
 		while (a[j-1] > t && j > 0)	// 정렬된 배열의 마지막 배열인 a[j-1]부터 정렬 대상의 원소가 저장된 t와 비교하여 a[j-1] < t < a[j]인 j를 찾을 때까지 반복
 		{
 			a[j] = a[j-1];			// a[j-1]을 a[j]에 설정
-			j--;					// 인덱스를 1을 줄인다.
+			j--;					// 인덱스를 1을 줄임
 		}
-		a[j] = t;					// a[j] 위치에 정렬 대상 배열t를 저장한다.
+		a[j] = t;					// a[j] 위치에 정렬 대상 배열t를 저장
 	}
 
 	printf("----------------------------------------------------------------\n");
-	printArray(a);					// 삽입 정렬된 배열을 출력한다.
+	printArray(a);					// 삽입 정렬된 배열을 출력
 
 	return 0;
 }
@@ -247,34 +247,34 @@ int bubbleSort(int *a)				// 버블 정렬을 하게 해주는 함수
 	return 0;
 }
 
-int shellSort(int *a)
+int shellSort(int *a)				// 셸 정렬을 하게 해주는 함수
 {
 	int i, j, k, h, v;
 
 	printf("Shell Sort: \n");
 	printf("----------------------------------------------------------------\n");
 
-	printArray(a);
+	printArray(a);					// 정렬하기 전의 배열 출력
 
-	for (h = MAX_ARRAY_SIZE/2; h > 0; h /= 2)
+	for (h = MAX_ARRAY_SIZE/2; h > 0; h /= 2)		// 전체 배열 크기 13을 1/2한 h가 0보다 작을때까지 반복
 	{
-		for (i = 0; i < h; i++)
+		for (i = 0; i < h; i++)						// i가 h보다 작을때까지 반복
 		{
-			for(j = i + h; j < MAX_ARRAY_SIZE; j += h)
+			for(j = i + h; j < MAX_ARRAY_SIZE; j += h)	// j가 13보다 작을때까지 반복
 			{
-				v = a[j];
-				k = j;
-				while (k > h-1 && a[k-h] > v)
+				v = a[j];							// 아직 정렬하지 않은 a[j] 배열의 첫번째 값을 v에 저장
+				k = j;								// 정렬 대상의 인덱스를 k에 저장
+				while (k > h-1 && a[k-h] > v)		// 정렬할 k인덱스가 h-1간격만큼의 인덱스 보다 크거나 a[k-h] 배열의 값이 v배열의 값보다 클때까지 반복
 				{
-					a[k] = a[k-h];
-					k -= h;
+					a[k] = a[k-h];					// a[k-h]의 배열을 a[k]에 저장
+					k -= h;							// k에 k-h 저장
 				}
-				a[k] = v;
+				a[k] = v;							// v를 a[k]에 저장
 			}
 		}
 	}
 	printf("----------------------------------------------------------------\n");
-	printArray(a);
+	printArray(a);									// 셸 정렬된 배열을 출력
 
 	return 0;
 }

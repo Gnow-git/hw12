@@ -192,29 +192,29 @@ int selectionSort(int *a)			// 선택 정렬을 실행하는 함수
 	return 0;
 }
 
-int insertionSort(int *a)
+int insertionSort(int *a)			// 삽입 정렬을 하게 해주는 함수
 {
 	int i, j, t;
 
 	printf("Insertion Sort: \n");
 	printf("----------------------------------------------------------------\n");
 
-	printArray(a);
+	printArray(a);					// 정렬하기 전의 배열 출력
 
-	for(i = 1; i < MAX_ARRAY_SIZE; i++)
+	for(i = 1; i < MAX_ARRAY_SIZE; i++)		// 13 크기 만큼 반복
 	{
-		t = a[i];
-		j = i;
-		while (a[j-1] > t && j > 0)
+		t = a[i];					// 아직 정렬하지 않은 배열의 첫번째 원소 a[i]를 t에 저장한다.
+		j = i;						// 정렬 대상의 인덱스를 j에 저장한다.
+		while (a[j-1] > t && j > 0)	// 정렬된 배열의 마지막 배열인 a[j-1]부터 정렬 대상의 원소가 저장된 t와 비교하여 a[j-1] < t < a[j]인 j를 찾을 때까지 반복
 		{
-			a[j] = a[j-1];
-			j--;
+			a[j] = a[j-1];			// a[j-1]을 a[j]에 설정
+			j--;					// 인덱스를 1을 줄인다.
 		}
-		a[j] = t;
+		a[j] = t;					// a[j] 위치에 정렬 대상 배열t를 저장한다.
 	}
 
 	printf("----------------------------------------------------------------\n");
-	printArray(a);
+	printArray(a);					// 정렬된 배열을 출력한다.
 
 	return 0;
 }

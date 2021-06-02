@@ -12,20 +12,20 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define MAX_ARRAY_SIZE			13	/* prime number */
+#define MAX_ARRAY_SIZE			13	/* prime number */		// 배열의 최대 크기를 13으로 지정
 #define MAX_HASH_TABLE_SIZE 	MAX_ARRAY_SIZE
 
 /* 필요에 따라 함수 추가 가능 */
-int initialize(int **a);
-int freeArray(int *a);
-void printArray(int *a);
+int initialize(int **a);			// 배열을 초기화하는 함수
+int freeArray(int *a);				// 배열에 할당된 메모리를 해제하는 함수
+void printArray(int *a);			// 배열을 출력하는 함수
 
-int selectionSort(int *a);
-int insertionSort(int *a);
-int bubbleSort(int *a);
-int shellSort(int *a);
+int selectionSort(int *a);			// 선택 정렬을 하게 해주는 함수
+int insertionSort(int *a);			// 삽입 정렬을 하게 해주는 함수
+int bubbleSort(int *a);				// 버블 정렬을 하게 해주는 함수
+int shellSort(int *a);				// 셸 정렬을 하게 해주는 함수
 /* recursive function으로 구현 */
-int quickSort(int *a, int n);
+int quickSort(int *a, int n);		// 퀵 정렬을 하게 해주는 함수
 
 
 /* hash code generator, key % MAX_HASH_TABLE_SIZE */
@@ -120,7 +120,7 @@ int main()
 	return 1;
 }
 
-int initialize(int** a)
+int initialize(int** a)						// 배열을 초기화하는 함수
 {
 	int *temp = NULL;
 
@@ -138,57 +138,57 @@ int initialize(int** a)
 	return 0;
 }
 
-int freeArray(int *a)
+int freeArray(int *a)		// 할당된 배열을 메모리에서 해제하는 함수
 {
 	if(a != NULL)
 		free(a);
 	return 0;
 }
 
-void printArray(int *a)
+void printArray(int *a)		// 배열을 출력하는 함수
 {
 	if (a == NULL) {
 		printf("nothing to print.\n");
 		return;
 	}
-	for(int i = 0; i < MAX_ARRAY_SIZE; i++)
+	for(int i = 0; i < MAX_ARRAY_SIZE; i++)		// 배열의 인덱스를 출력
 		printf("a[%02d] ", i);
 	printf("\n");
-	for(int i = 0; i < MAX_ARRAY_SIZE; i++)
+	for(int i = 0; i < MAX_ARRAY_SIZE; i++)		// 배열의 값을 출력
 		printf("%5d ", a[i]);
 	printf("\n");
 }
 
 
-int selectionSort(int *a)
+int selectionSort(int *a)			// 선택 정렬을 실행하는 함수
 {
-	int min;
-	int minindex;
+	int min;						// 선택할 작은 값을 min이라는 변수로 선언
+	int minindex;					// min의 인덱스 값 변수를 minindex로 선언
 	int i, j;
 
 	printf("Selection Sort: \n");
 	printf("----------------------------------------------------------------\n");
 
-	printArray(a);
+	printArray(a);					// 정렬하기 전의 배열 출력
 
-	for (i = 0; i < MAX_ARRAY_SIZE; i++)
+	for (i = 0; i < MAX_ARRAY_SIZE; i++)		// 13의 크기만큼 반복
 	{
-		minindex = i;
-		min = a[i];
-		for(j = i+1; j < MAX_ARRAY_SIZE; j++)
+		minindex = i;				// 기준 위치의 인덱스 i를 minindex에 설정
+		min = a[i];					// 기준 위치의 값 a[i]를 min에 설정
+		for(j = i+1; j < MAX_ARRAY_SIZE; j++)	// i+1번의 배열부터 마지막 배열까지 비교를 한다. 
 		{
 			if (min > a[j])
 			{
-				min = a[j];
-				minindex = j;
+				min = a[j];						// 가장 작은 a[j]를 min에 설정
+				minindex = j;					// 가장 작은 값을 인덱스를 minindex에 설정
 			}
 		}
-		a[minindex] = a[i];
-		a[i] = min;
+		a[minindex] = a[i];			// a[i]를 a[minindex]로 설정
+		a[i] = min;					// min을 a[i]로 설정
 	}
 
 	printf("----------------------------------------------------------------\n");
-	printArray(a);
+	printArray(a);					// 정렬된 배열을 출력
 	return 0;
 }
 
@@ -380,6 +380,5 @@ int search(int *ht, int key)
 	}
 	return index;
 }
-
 
 
